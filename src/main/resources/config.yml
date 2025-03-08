@@ -1,0 +1,21 @@
+enabled: false
+
+# period to spawn 1 clown (seconds)
+spawn-clown-timer:
+  min: 180
+  max: 600
+
+
+
+
+# Clown Settings
+
+# near player spawn radius (blocks)
+# must be > 1
+spawn-radius: 5
+
+# has clown AI
+clown-ai: true
+
+# can clown be killed
+clown-dead: false

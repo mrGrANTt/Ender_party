@@ -1,0 +1,4 @@
+name: Ender_party
+version: '0.1'
+main: org.ven.mrg.ender_party.Ender_party
+api-version: '1.21'
