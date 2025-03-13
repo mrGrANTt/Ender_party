@@ -11,6 +11,18 @@ public class Values {
     public static void setPlg(Ender_party value) { plg = value; }
     public static Ender_party getPlg() { return plg; }
 
+    public static void logWithType(int type, String msg) {
+        if(type <= plg.getConfig().getInt("log-type", 1))
+            plg.getLogger().info(msg);
+    }
+
+
+
+
+
+
+
+
     public static boolean isEnabled() { return plg.getConfig().getBoolean("enabled"); }
 
     public static int getRandomSpawnTime() {

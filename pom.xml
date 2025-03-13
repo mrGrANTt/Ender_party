@@ -7,6 +7,7 @@
     <groupId>org.ven.mrg</groupId>
     <artifactId>Ender_party</artifactId>
     <packaging>jar</packaging>
+    <version>1.0</version>
 
     <name>Ender_party</name>
 
