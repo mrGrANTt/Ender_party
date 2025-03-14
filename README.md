@@ -9,7 +9,17 @@
 <br/>
 
 ## Config
-null
+> `enabled`: false - is enderman-clown able to spawn \
+> \
+> \
+> `spawn-clown-timer`: - controlling time to spawn new enderman-clown. If you want to set exact time, you can set 2 equals values 
+> - `min`: 180(in seconds) - min time to spawn enderman-clown near player
+> - `max`: 600(in seconds) - max time to spawn enderman-clown near player 
+>
+> \
+> `spawn-radius`: 5 - radius to spawn ender man(maybe removed later) \
+> `clown-ai`: true - toggle enderman-clown AI \
+> `clown-dead`: false - Toggles the option to kill enderman-clown
 
 <br/>
 
@@ -21,14 +31,14 @@ null
 
 
 ## 2Do:
-- [ ] Enderman spawning
-- [ ] Block stealing
-- [ ] Teleport away
-- [ ] Run away before teleport
-- [ ] Saving stolen blocks
-- [ ] Enderman spawning near player
-- [ ] Enderman settings
-- [ ] Enderman clown hat
-- [ ] Config description
-- [ ] Command system
-- [ ] Command description
+> - [ ] Enderman spawning
+> - [ ] Block stealing
+> - [ ] Teleport away
+> - [ ] Run away before teleport
+> - [ ] Saving stolen blocks
+> - [ ] Enderman spawning near player
+> - [ ] Enderman settings
+> - [ ] Enderman clown hat
+> - [x] Config description
+> - [ ] Command system
+> - [ ] Command description
