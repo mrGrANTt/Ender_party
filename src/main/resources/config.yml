@@ -1,4 +1,5 @@
 enabled: false
+log-type: 1
 
 # period to spawn 1 clown (seconds)
 spawn-clown-timer:

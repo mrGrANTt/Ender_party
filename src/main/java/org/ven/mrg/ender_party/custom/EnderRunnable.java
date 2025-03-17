@@ -19,17 +19,17 @@ public class EnderRunnable extends MrgRunnable {
     @Override
     public void run() {
         try {
-            if (!plr.isOnline()) {
-                Values.logWithType(0, "Task " + getTaskId() + " will be stopped! " + plr.getName() + " was offline");
+            if (!plr.isOnline() || !Values.isEnabled()) {
+                Values.logWithType(0, "[EnderRunnable] Task " + getTaskId() + " will be stopped! " + plr.getName() + " was offline");
                 this.cancel();
                 return;
             }
-            Values.logWithType(0, "Task " + getTaskId() + " start process for " + plr.getName() + ")");
-            new EnderController(plr.getLocation(), EnderPhase.SPAWN).runTask();
+            Values.logWithType(0, "[EnderRunnable] Task " + getTaskId() + " start process for " + plr.getName());
 
-            runTaskLater(Values.getRandomSpawnTime());
+            new EnderController(plr.getLocation()).runTaskLater(300);
+            new EnderRunnable(plr).runTaskLater(Values.getRandomSpawnTime());
         } catch (IllegalStateException e) {
-            Values.logWithType(0, "Task " + getTaskId() + " by " + plr.getName() + " was not scheduled yet!");
+            Values.logWithType(0, "[EnderRunnable] Task " + getTaskId() + " by " + plr.getName() + " was not scheduled yet!");
         }
     }
 }

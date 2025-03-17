@@ -39,13 +39,13 @@ null
 ```
 
 > 🔳 Enderman spawning \
-> ❌ Block stealing \
-> ❌ Teleport away \
-> ❌ Run away before teleport \
+> 🔳 Block stealing \
+> 🔳 Teleport away \
+> 🔳 Run away before teleport \
 > ❌ Saving stolen blocks \
-> ❌ Enderman spawning near player \
+> ✅ Enderman spawning near player \
 > ❌ Enderman settings \
 > ❌ Enderman clown hat \
 > ✅ Config description \
 > ❌ Command system \
-> ❌ Command description \
+> ❌ Command description
