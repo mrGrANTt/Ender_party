@@ -10,6 +10,7 @@
 
 ## Config
 > `enabled`: false - is enderman-clown able to spawn \
+> `log-type`: 1 - the amount of information displayed. (0 - all, 1 - base, 2 - only needed, 3 - no)
 > \
 > \
 > `spawn-clown-timer`: - controlling time to spawn new enderman-clown. If you want to set exact time, you can set 2 equals values 
@@ -38,10 +39,10 @@ null
 ❌ - not done
 ```
 
-> 🔳 Enderman spawning \
-> 🔳 Block stealing \
-> 🔳 Teleport away \
-> 🔳 Run away before teleport \
+> ✅ Enderman spawning \
+> ✅ Block stealing \
+> ✅ Teleport away \
+> 🔳 Run away \
 > ❌ Saving stolen blocks \
 > ✅ Enderman spawning near player \
 > ❌ Enderman settings \
