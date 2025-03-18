@@ -29,7 +29,7 @@ public class Values {
         return rand.nextInt(
             plg.getConfig().getInt("spawn-clown-timer.min"),
             plg.getConfig().getInt("spawn-clown-timer.max") + 1
-        ) * 20;
+        ); //* 20;
     }
 
     public static int randomSpawnRadius() {

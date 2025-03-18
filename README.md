@@ -42,10 +42,11 @@ null
 > ✅ Enderman spawning \
 > ✅ Block stealing \
 > ✅ Teleport away \
-> 🔳 Run away \
+> ✅ Run away \
+> 🔳 Enderman gravity without AI \
 > ❌ Saving stolen blocks \
 > ✅ Enderman spawning near player \
-> ❌ Enderman settings \
+> 🔳 Enderman settings \
 > ❌ Enderman clown hat \
 > ✅ Config description \
 > ❌ Command system \
