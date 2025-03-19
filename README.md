@@ -26,7 +26,7 @@
 
 
 ## Commands
-null
+permission: `vensoly7.joke`
 
 <br/>
 
@@ -44,10 +44,11 @@ null
 > ✅ Teleport away \
 > ✅ Run away \
 > 🔳 Enderman gravity without AI \
-> ❌ Saving stolen blocks \
+> 🔳 Saving stolen blocks \
+> ❌ Loading stolen blocks \
 > ✅ Enderman spawning near player \
-> 🔳 Enderman settings \
+> ✅ Enderman settings \
 > ❌ Enderman clown hat \
 > ✅ Config description \
-> ❌ Command system \
+> 🔳 Command system \
 > ❌ Command description

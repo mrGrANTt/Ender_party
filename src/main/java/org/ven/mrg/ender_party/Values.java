@@ -1,12 +1,16 @@
 package org.ven.mrg.ender_party;
 
+import net.kyori.adventure.text.format.TextColor;
+
 import java.util.Random;
 
 public class Values {
     private static Ender_party plg;
     private static final Random rand = new Random();
 
-    public static void reload() {}
+    public static void reload() {
+        plg.reloadConfig();
+    }
 
     public static void setPlg(Ender_party value) { plg = value; }
     public static Ender_party getPlg() { return plg; }
@@ -29,13 +33,13 @@ public class Values {
         return rand.nextInt(
             plg.getConfig().getInt("spawn-clown-timer.min"),
             plg.getConfig().getInt("spawn-clown-timer.max") + 1
-        ); //* 20;
-    }
-
-    public static int randomSpawnRadius() {
-        return rand.nextInt(1, plg.getConfig().getInt("spawn-radius"));
+        ) * 20;
     }
 
     public static boolean hasClownAI() { return plg.getConfig().getBoolean("clown-ai"); }
     public static boolean hasClownDead() { return plg.getConfig().getBoolean("clown-dead"); }
+
+    public static TextColor getPlgColor() {
+        return TextColor.color(251, 177, 0);
+    }
 }

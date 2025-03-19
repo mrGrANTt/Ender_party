@@ -13,6 +13,8 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.jetbrains.annotations.NotNull;
 import org.ven.mrg.ender_party.Values;
 
+import java.sql.SQLException;
+
 
 public class EnderController extends MrgRunnable {
     private EnderPhase phase;
@@ -38,10 +40,11 @@ public class EnderController extends MrgRunnable {
         Values.logWithType(0, "[EnderController] Spawning new e-man in " + loc.getBlockX() + " " + loc.getBlockY() + " " + loc.getBlockZ() + "!");
         Enderman eman = (Enderman) loc.getWorld().spawnEntity(loc, EntityType.ENDERMAN);
         eman.setMetadata("EnderClown", new FixedMetadataValue(Values.getPlg(), true));
-        eman.setAI(false);
+        eman.setAI(Values.hasClownAI());
+        eman.setInvulnerable(!Values.hasClownDead());
         //TODO: add gravity
 
-        while (!eman.teleportRandomly()) {}
+        teleport(10, eman);
 
         eman.getEquipment().setHelmet(getClownHead());
         eman.getEquipment().setDropChance(EquipmentSlot.HEAD, 1f);
@@ -69,7 +72,7 @@ public class EnderController extends MrgRunnable {
                 if (!eman.isDead()) {
                     Block blc = eman.getLocation().getBlock().getRelative(BlockFace.DOWN);
                     if (blc.getType().equals(Material.AIR)) {
-                        while (!eman.teleportRandomly()) {}
+                        teleport(10);
                     } else {
                         if (!protectedBlock(blc)) {
                             Values.logWithType(0, "[EnderController] Stealing block in %d %d %d!"
@@ -96,7 +99,7 @@ public class EnderController extends MrgRunnable {
             case RUN_OUT:
                 if (!eman.isDead()) {
                     Values.logWithType(0, "[EnderController] E-man running out!");
-                    while (!eman.teleportRandomly()) {}
+                    for(int i = 0; i < 10; i++) if (eman.teleportRandomly()) break;
                     phase = EnderPhase.HIDE;
                     new EnderController(phase, eman).runTaskLater(200);
                 }
@@ -105,12 +108,28 @@ public class EnderController extends MrgRunnable {
             case HIDE:
                 if (!eman.isDead()) {
                     Values.logWithType(0, "[EnderController] E-man hide!");
-                    //TODO: save in db
+                    try {
+                        BlockDB.addBlock(eman.getCarriedBlock());
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
                     Location loc = eman.getLocation();
                     loc.setY(-400);
                     eman.teleport(loc);
                 }
                 break;
         }
+    }
+
+    private void teleport(int max) {
+        for(int i = 0; i < max; i++)
+            if (eman.teleportRandomly())
+                break;
+    }
+
+    private static void teleport(int max, Enderman eman) {
+        for(int i = 0; i < max; i++)
+            if (eman.teleportRandomly())
+                break;
     }
 }

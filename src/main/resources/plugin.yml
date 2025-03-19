@@ -9,4 +9,4 @@ commands:
       - joke
       - v7-joke
       - v7j
-    usage: /v7j [action] <arguments>
+    usage: /joke help

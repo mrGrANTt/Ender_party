@@ -12,18 +12,18 @@ public final class Ender_party extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
         Values.setPlg(this);
-        Values.logWithType(0, "Values loaded!");
+        Values.logWithType(1, "Values loaded!");
 
 
         PluginCommand cmd = getCommand("joke");
         if(cmd != null) {
             cmd.setExecutor(new CommandSystem());
             cmd.setTabCompleter(new CommandTab());
-            Values.logWithType(0, "Commands loaded!");
+            Values.logWithType(1, "Commands loaded!");
         }
 
         getServer().getPluginManager().registerEvents(new Events(), this);
-        Values.logWithType(0, "Events loaded!");
-        Values.logWithType(1, "Plugin loaded!");
+        Values.logWithType(1, "Events loaded!");
+        Values.logWithType(2, "Plugin loaded!");
     }
 }
