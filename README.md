@@ -9,7 +9,7 @@
 <br/>
 
 ## Config
-> `enabled`: false - is enderman-clown able to spawn \
+> `enabled`: false - is enderman-clown able to spawn (to enable spawning need restart) \
 > `log-type`: 1 - the amount of information displayed. (0 - all, 1 - base, 2 - only needed, 3 - no)
 > \
 > \
@@ -27,6 +27,11 @@
 
 ## Commands
 permission: `vensoly7.joke`
+> `joke help` - print list of arguments description \
+> `joke reload` - reload plugin configuration \
+> `joke disable` - disable enderman spawning \
+> `joke backup` - backup all stolen blocks \
+> `spawn_clown` <x,y,z> - spawn enderman on x y z  
 
 <br/>
 
@@ -43,12 +48,13 @@ permission: `vensoly7.joke`
 > ✅ Block stealing \
 > ✅ Teleport away \
 > ✅ Run away \
+> ✅ Enderman spawning near player \
+> ✅ Config description \
+> ✅ Command system \
+> ✅ Command description
 > 🔳 Enderman gravity without AI \
+> 🔳 Enderman invulnerable \
+> 🔳 Enderman settings \
 > 🔳 Saving stolen blocks \
 > ❌ Loading stolen blocks \
-> ✅ Enderman spawning near player \
-> ✅ Enderman settings \
 > ❌ Enderman clown hat \
-> ✅ Config description \
-> 🔳 Command system \
-> ❌ Command description

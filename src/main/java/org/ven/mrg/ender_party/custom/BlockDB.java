@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlockDB {
-    private static final String DB_URL = "jdbc:sqlite:/plugins/Ender_party/blocks.sqlite";
+    private static final String DB_URL = "jdbc:sqlite:plugins/Ender_party/blocks.sqlite";
 
     static {
         Values.logWithType(1, "Loading block's database!");
@@ -23,7 +23,7 @@ public class BlockDB {
     private static void initializeDatabase() throws SQLException {
         try (Connection conn = DriverManager.getConnection(DB_URL);
              Statement sts = conn.createStatement()) {
-            sts.execute("CREATE TABLE IF NOT EXISTS blocks (int x notnull, int y notnull, ing z notnull)");
+            sts.execute("CREATE TABLE IF NOT EXISTS blocks (int x, int y, int z)");
             Values.logWithType(0, "Database table created!");
         }
     }

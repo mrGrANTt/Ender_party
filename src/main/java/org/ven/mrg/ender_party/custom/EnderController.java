@@ -20,9 +20,12 @@ public class EnderController extends MrgRunnable {
     private EnderPhase phase;
     private Enderman eman;
 
+    public EnderController(Location loc, boolean teleport) {
+        this(EnderPhase.GET_BLOCK, getClown(loc, teleport));
+    }
+
     public EnderController(Location loc) {
-        this.phase = EnderPhase.GET_BLOCK;
-        this.eman = getClown(loc);
+        this(loc, true);
     }
 
     public EnderController(EnderPhase phase, Enderman eman) {
@@ -36,19 +39,23 @@ public class EnderController extends MrgRunnable {
         return item;
     }
 
-    public static Enderman getClown(Location loc) {
+    public static Enderman getClown(Location loc, boolean teleport) {
         Values.logWithType(0, "[EnderController] Spawning new e-man in " + loc.getBlockX() + " " + loc.getBlockY() + " " + loc.getBlockZ() + "!");
         Enderman eman = (Enderman) loc.getWorld().spawnEntity(loc, EntityType.ENDERMAN);
         eman.setMetadata("EnderClown", new FixedMetadataValue(Values.getPlg(), true));
         eman.setAI(Values.hasClownAI());
-        eman.setInvulnerable(!Values.hasClownDead());
-        //TODO: add gravity
+        eman.setGravity(true);
+        eman.setInvulnerable(!Values.hasClownDead());//TODO: Invulnerable and Gravity
 
-        teleport(10, eman);
+        if (teleport) teleport(10, eman);
 
         eman.getEquipment().setHelmet(getClownHead());
         eman.getEquipment().setDropChance(EquipmentSlot.HEAD, 1f);
         return eman;
+    }
+
+    public static Enderman getClown(Location loc) {
+        return getClown(loc, true);
     }
 
     public static boolean isClown(@NotNull Entity entity) {
