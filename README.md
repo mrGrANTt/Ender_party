@@ -51,10 +51,10 @@ permission: `vensoly7.joke`
 > ✅ Enderman spawning near player \
 > ✅ Config description \
 > ✅ Command system \
-> ✅ Command description
+> ✅ Command description \
 > 🔳 Enderman gravity without AI \
 > 🔳 Enderman invulnerable \
 > 🔳 Enderman settings \
 > 🔳 Saving stolen blocks \
 > ❌ Loading stolen blocks \
-> ❌ Enderman clown hat \
+> ❌ Enderman clown hat
