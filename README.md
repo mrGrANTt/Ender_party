@@ -27,11 +27,11 @@
 
 ## Commands
 permission: `vensoly7.joke`
-> `joke help` - print list of arguments description \
-> `joke reload` - reload plugin configuration \
-> `joke disable` - disable enderman spawning \
-> `joke backup` - backup all stolen blocks \
-> `spawn_clown` <x,y,z> - spawn enderman on x y z  
+> `/joke help` - print list of arguments description \
+> `/joke reload` - reload plugin configuration \
+> `/joke disable` - disable enderman spawning \
+> `/joke backup` - backup all stolen blocks \
+> `/spawn_clown <x,y,z>` - spawn enderman on x y z  
 
 <br/>
 
