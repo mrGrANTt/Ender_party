@@ -18,20 +18,31 @@ import java.sql.SQLException;
 
 public class EnderController extends MrgRunnable {
     private EnderPhase phase;
-    private Enderman eman;
+    private final Enderman eman;
+    private BlockInfo block;
+
+
+
+
+
+    public EnderController(EnderPhase phase, Enderman eman, BlockInfo block) {
+        this.phase = phase;
+        this.eman = eman;
+        this.block = block;
+    }
 
     public EnderController(Location loc, boolean teleport) {
-        this(EnderPhase.GET_BLOCK, getClown(loc, teleport));
+        this(EnderPhase.GET_BLOCK, getClown(loc, teleport), null);
     }
 
     public EnderController(Location loc) {
         this(loc, true);
     }
 
-    public EnderController(EnderPhase phase, Enderman eman) {
-        this.phase = phase;
-        this.eman = eman;
-    }
+
+
+
+
 
     private static ItemStack getClownHead() {
         ItemStack item = new ItemStack(Material.CARVED_PUMPKIN);
@@ -80,28 +91,22 @@ public class EnderController extends MrgRunnable {
             case GET_BLOCK:
                 if (!eman.isDead()) {
                     Block blc = eman.getLocation().getBlock().getRelative(BlockFace.DOWN);
-                    if (blc.getType().equals(Material.AIR)) {
+                    if (blc.getType().equals(Material.AIR) || protectedBlock(blc)) {
                         teleport(10);
                     } else {
-                        if (!protectedBlock(blc)) {
-                            Values.logWithType(0, "[EnderController] Stealing block in %d %d %d!"
-                                    .formatted(
-                                            blc.getLocation().getBlockX(),
-                                            blc.getLocation().getBlockY(),
-                                            blc.getLocation().getBlockZ()));
+                        Values.logWithType(0, "[EnderController] Stealing block in %d %d %d!"
+                                .formatted(
+                                        blc.getLocation().getBlockX(),
+                                        blc.getLocation().getBlockY(),
+                                        blc.getLocation().getBlockZ()));
 
-                            eman.setCarriedBlock(blc.getBlockData());
-                            blc.setType(Material.AIR);
-                        } else {
-                            Values.logWithType(0, "[EnderController] Don't stealing block in %d %d %d!".formatted(
-                                    blc.getLocation().getBlockX(),
-                                    blc.getLocation().getBlockY(),
-                                    blc.getLocation().getBlockZ()));
-                        }
-
+                        block = new BlockInfo(blc);
+                        Values.logWithType(0, block.toString());
+                        eman.setCarriedBlock(blc.getBlockData());
+                        blc.setType(Material.AIR);
                         phase = EnderPhase.RUN_OUT;
                     }
-                    new EnderController(phase, eman).runTaskLater(200);
+                    new EnderController(phase, eman, block).runTaskLater(200);
                 }
                 break;
 
@@ -110,7 +115,7 @@ public class EnderController extends MrgRunnable {
                     Values.logWithType(0, "[EnderController] E-man running out!");
                     for(int i = 0; i < 10; i++) if (eman.teleportRandomly()) break;
                     phase = EnderPhase.HIDE;
-                    new EnderController(phase, eman).runTaskLater(200);
+                    new EnderController(phase, eman, block).runTaskLater(200);
                 }
                 break;
 
@@ -118,7 +123,10 @@ public class EnderController extends MrgRunnable {
                 if (!eman.isDead()) {
                     Values.logWithType(0, "[EnderController] E-man hide!");
                     try {
-                        BlockDB.addBlock(eman.getCarriedBlock());
+                        if(eman.getCarriedBlock() != null) {
+                            Values.logWithType(0, block.toString());
+                            BlockDB.addBlock(block);
+                        }
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }

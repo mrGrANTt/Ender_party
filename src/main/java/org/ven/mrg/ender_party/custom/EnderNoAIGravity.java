@@ -1,7 +1,6 @@
 package org.ven.mrg.ender_party.custom;
 
 import org.bukkit.entity.Enderman;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.ven.mrg.ender_party.Values;
 
 public class EnderNoAIGravity extends MrgRunnable {

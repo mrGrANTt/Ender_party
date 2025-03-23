@@ -54,7 +54,7 @@ permission: `vensoly7.joke`
 > ✅ Command description \
 > ✅ Enderman invulnerable \
 > 🔳 Enderman gravity without AI \
-> 🔳 Enderman settings \
-> 🔳 Saving stolen blocks \
-> ❌ Loading stolen blocks \
-> ❌ Enderman clown hat
+> 🔳 Enderman settings (gravity) \
+> 🔳 Saving stolen blocks (save nbt) \
+> 🔳 Loading stolen blocks (need testing) \
+> ❌ Enderman clown hat (create model and RP)
