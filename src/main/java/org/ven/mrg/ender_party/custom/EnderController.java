@@ -43,9 +43,11 @@ public class EnderController extends MrgRunnable {
         Values.logWithType(0, "[EnderController] Spawning new e-man in " + loc.getBlockX() + " " + loc.getBlockY() + " " + loc.getBlockZ() + "!");
         Enderman eman = (Enderman) loc.getWorld().spawnEntity(loc, EntityType.ENDERMAN);
         eman.setMetadata("EnderClown", new FixedMetadataValue(Values.getPlg(), true));
-        eman.setAI(Values.hasClownAI());
-        eman.setGravity(true);
-        eman.setInvulnerable(!Values.hasClownDead());//TODO: Invulnerable and Gravity
+
+        if (!Values.hasClownAI()) {
+            eman.setAI(false);
+            new EnderNoAIGravity(eman).runTaskTimer(0, 1);
+        }
 
         if (teleport) teleport(10, eman);
 

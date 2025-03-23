@@ -52,8 +52,8 @@ permission: `vensoly7.joke`
 > ✅ Config description \
 > ✅ Command system \
 > ✅ Command description \
+> ✅ Enderman invulnerable \
 > 🔳 Enderman gravity without AI \
-> 🔳 Enderman invulnerable \
 > 🔳 Enderman settings \
 > 🔳 Saving stolen blocks \
 > ❌ Loading stolen blocks \
