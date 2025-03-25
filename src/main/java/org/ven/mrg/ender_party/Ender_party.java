@@ -10,6 +10,12 @@ public final class Ender_party extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        if (!getServer().getPluginManager().isPluginEnabled("NBTAPI")) {
+            getLogger().warning("To enable plugin you mast install NBT-API(https://modrinth.com/plugin/nbtapi/versions)");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+
         saveDefaultConfig();
         Values.setPlg(this);
         Values.logWithType(1, "Values loaded!");

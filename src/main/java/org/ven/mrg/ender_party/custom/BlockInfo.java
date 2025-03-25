@@ -1,7 +1,11 @@
 package org.ven.mrg.ender_party.custom;
 
+import de.tr7zw.nbtapi.NBTBlock;
+import de.tr7zw.nbtapi.NBTCompound;
+import de.tr7zw.nbtapi.iface.ReadWriteNBT;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.ven.mrg.ender_party.Values;
 
 public class BlockInfo {
     public Location loc;
@@ -14,7 +18,7 @@ public class BlockInfo {
 
     public BlockInfo(Block block) {
         loc = block.getLocation();
-        json = "{\"type\":\"test_json\"}"; //TODO: nbt
+        json = block.getBlockData().getAsString();
     }
 
     @Override

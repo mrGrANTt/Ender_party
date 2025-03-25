@@ -31,7 +31,7 @@ public class BlockDB {
         }
     }
 
-    private static List<BlockInfo> getAllBlocks() throws SQLException {
+    public static List<BlockInfo> getAllBlocks() throws SQLException {
         List<BlockInfo> blocks = new ArrayList<>();
 
         try (Statement sts = conn.createStatement();
@@ -39,11 +39,11 @@ public class BlockDB {
             Values.logWithType(0, "Select all block from database");
             while (res.next()) {
                 BlockInfo block = new BlockInfo(new Location(
-                        Values.getPlg().getServer().getWorld(res.getString(0)),
-                        res.getInt(1),
+                        Values.getPlg().getServer().getWorld(res.getString(1)),
                         res.getInt(2),
-                        res.getInt(3)
-                ), res.getString(4));
+                        res.getInt(3),
+                        res.getInt(4)
+                ), res.getString(5));
                 blocks.add(block);
             }
         }

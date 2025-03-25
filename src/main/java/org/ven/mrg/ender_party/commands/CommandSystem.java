@@ -73,23 +73,25 @@ public class CommandSystem implements CommandExecutor {
                     try {
                         boolean isPlayer = sender instanceof Player;
 
-                        int x;
+                        double x;
                         if (args[1].equals("~"))
-                            if (isPlayer) x = ((Player)sender).getLocation().getBlockX();
+                            if (isPlayer) x = ((Player)sender).getLocation().getX();
                             else throw new RuntimeException("is not player");
-                        else x = Integer.parseInt(args[1]);
+                        else x = Double.parseDouble(args[1]);
 
-                        int y;
+                        double y;
                         if (args[2].equals("~"))
-                            if (isPlayer) y = ((Player)sender).getLocation().getBlockY();
+                            if (isPlayer) y = ((Player)sender).getLocation().getY();
                             else throw new RuntimeException("is not player");
-                        else y = Integer.parseInt(args[2]);
+                        else y = Double.parseDouble(args[2]);
 
-                        int z;
+                        double z;
                         if (args[3].equals("~"))
-                            if (isPlayer) z = ((Player)sender).getLocation().getBlockZ();
+                            if (isPlayer) z = ((Player)sender).getLocation().getZ();
                             else throw new RuntimeException("is not player");
-                        else z = Integer.parseInt(args[3]);
+                        else z = Double.parseDouble(args[3]);
+
+
 
                         new EnderController(new Location(Values.getPlg().getServer().getWorld(args.length >= 5 ? args[4] : "world"), x,y,z), false).runTaskLater(300);
                     } catch (Exception ex) {

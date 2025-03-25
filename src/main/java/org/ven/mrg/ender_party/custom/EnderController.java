@@ -8,6 +8,7 @@ import org.bukkit.entity.Enderman;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.jetbrains.annotations.NotNull;
@@ -82,7 +83,10 @@ public class EnderController extends MrgRunnable {
                 || block.getType().equals(Material.REPEATING_COMMAND_BLOCK)
                 || block.getType().equals(Material.BARRIER)
                 || block.getType().equals(Material.STRUCTURE_BLOCK)
-                || block.getType().equals(Material.STRUCTURE_VOID);
+                || block.getType().equals(Material.STRUCTURE_VOID)
+                || block.getState() instanceof InventoryHolder
+                || block.getType().equals(Material.BEEHIVE)
+                || block.getType().equals(Material.BEE_NEST);
     }
 
     @Override
