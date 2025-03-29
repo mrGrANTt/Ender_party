@@ -60,4 +60,4 @@ permission: `vensoly7.joke`
 > ✅ Enderman clown hat (create model and RP) \
 > ❌ Secret ender spawn \
 > ✅ Protect Metadata lode \
-> 🔳 Block protection
+> ✅ Block protection

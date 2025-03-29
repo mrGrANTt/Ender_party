@@ -121,4 +121,12 @@ public class BlockDB {
             }
         }
     }
+
+    static void clearDB() throws SQLException {
+        try (Statement sts = conn.createStatement()) {
+            sts.execute("DELETE FROM blocks");
+            sts.execute("DELETE FROM protected_blocks");
+            Values.logWithType(0, "Database table cleared!");
+        }
+    }
 }

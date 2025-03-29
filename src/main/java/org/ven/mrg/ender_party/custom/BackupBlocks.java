@@ -11,6 +11,7 @@ public class BackupBlocks {
         try {
             for (BlockInfo blockInfo : BlockDB.getAllBlocks())
                 restoreBlockFromNBT(blockInfo);
+            BlockDB.clearDB();
         } catch (SQLException e) {
             Values.getPlg().getLogger().warning("Error in regeneration blocks... Try again!\n" + e.getMessage());
             e.printStackTrace();
@@ -21,5 +22,6 @@ public class BackupBlocks {
 
     public static void restoreBlockFromNBT(BlockInfo blockInfo) {
         blockInfo.loc.getBlock().setBlockData(Bukkit.createBlockData(blockInfo.json));
+        blockInfo.loc.getBlock().removeMetadata("protected-block", Values.getPlg());
     }
 }

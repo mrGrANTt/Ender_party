@@ -4,6 +4,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.block.data.Levelled;
+import org.bukkit.block.data.type.Light;
 import org.bukkit.entity.Enderman;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -82,6 +84,7 @@ public class EnderController extends MrgRunnable {
                 || block.getType().equals(Material.CHAIN_COMMAND_BLOCK)
                 || block.getType().equals(Material.REPEATING_COMMAND_BLOCK)
                 || block.getType().equals(Material.BARRIER)
+                || block.getType().equals(Material.LIGHT)
                 || block.getType().equals(Material.STRUCTURE_BLOCK)
                 || block.getType().equals(Material.STRUCTURE_VOID)
                 || block.getState() instanceof InventoryHolder
@@ -107,7 +110,12 @@ public class EnderController extends MrgRunnable {
                         block = new BlockInfo(blc);
                         Values.logWithType(0, block.toString());
                         eman.setCarriedBlock(blc.getBlockData());
-                        blc.setType(Material.AIR);
+
+                        blc.setType(Material.LIGHT);
+                        Levelled lg = (Levelled) blc.getBlockData();
+                        lg.setLevel(0);
+                        blc.setBlockData(lg, true);
+
                         blc.setMetadata("protected-block", new FixedMetadataValue(Values.getPlg(), true));
                         try {
                             BlockDB.addProtectedBlock(blc.getLocation());
