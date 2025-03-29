@@ -4,6 +4,7 @@ package org.ven.mrg.ender_party.events;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -31,6 +32,20 @@ public class Events implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent ev) {
         if(!Values.hasClownDead() && ev.getEntity().getType().equals(EntityType.ENDERMAN) && ev.getEntity().hasMetadata("EnderClown")) {
+            ev.setCancelled(true);
+        }
+    }
+
+    /*
+            BlockMultiPlaceEvent
+            BlockPistonEvent
+            BlockPlaceEvent ~
+            BlockPistonExtendEvent
+    */
+
+    @EventHandler
+    public void onBlockPlace(BlockPlaceEvent ev) {
+        if (ev.getBlock().hasMetadata("protected-block")) {
             ev.setCancelled(true);
         }
     }

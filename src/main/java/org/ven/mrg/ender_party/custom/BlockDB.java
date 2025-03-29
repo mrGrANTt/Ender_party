@@ -3,6 +3,8 @@ package org.ven.mrg.ender_party.custom;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
+import org.bukkit.metadata.FixedMetadataValue;
+import org.jetbrains.annotations.NotNull;
 import org.ven.mrg.ender_party.Values;
 
 import java.sql.*;
@@ -27,6 +29,7 @@ public class BlockDB {
     private static void initializeDatabase() throws SQLException {
         try (Statement sts = conn.createStatement()) {
             sts.execute("CREATE TABLE IF NOT EXISTS blocks (world TEXT, x INT, y INT, z INT, data TEXT)");
+            sts.execute("CREATE TABLE IF NOT EXISTS protected_blocks (world TEXT, x INT, y INT, z INT)");
             Values.logWithType(0, "Database table created!");
         }
     }
@@ -88,6 +91,34 @@ public class BlockDB {
 
             st.executeUpdate();
             Values.logWithType(0, "Block removed from database");
+        }
+    }
+
+    public static void addProtectedBlock(Location location) throws SQLException {
+        try (PreparedStatement st = conn.prepareStatement("INSERT INTO protected_blocks (world, x, y, z) VALUES (?, ?, ?, ?)")) {
+            st.setString(1, location.getWorld().getName());
+            st.setInt(2, location.getBlockX());
+            st.setInt(3, location.getBlockY());
+            st.setInt(4, location.getBlockZ());
+
+            st.executeUpdate();
+            Values.logWithType(0, "Added protected block to database");
+        }
+    }
+
+    public static void LodeAllProtectedBlocks() throws SQLException {
+        try (Statement sts = conn.createStatement();
+             ResultSet res = sts.executeQuery("SELECT * FROM protected_blocks")) {
+            Values.logWithType(0, "Select all protected block from database");
+            while (res.next()) {
+                Block block = new Location(
+                        Values.getPlg().getServer().getWorld(res.getString(1)),
+                        res.getInt(2),
+                        res.getInt(3),
+                        res.getInt(4)
+                ).getBlock();
+                block.setMetadata("protected-block", new FixedMetadataValue(Values.getPlg(), true));
+            }
         }
     }
 }

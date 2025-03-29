@@ -58,7 +58,7 @@ public class EnderController extends MrgRunnable {
 
         if (!Values.hasClownAI()) {
             eman.setAI(false);
-            new EnderNoAIGravity(eman).runTaskTimer(0, 1);
+            new EnderNoAIGravity(eman).runTaskTimer(0,1);
         }
 
         if (teleport) teleport(10, eman);
@@ -108,6 +108,14 @@ public class EnderController extends MrgRunnable {
                         Values.logWithType(0, block.toString());
                         eman.setCarriedBlock(blc.getBlockData());
                         blc.setType(Material.AIR);
+                        blc.setMetadata("protected-block", new FixedMetadataValue(Values.getPlg(), true));
+                        try {
+                            BlockDB.addProtectedBlock(blc.getLocation());
+                            Values.logWithType(0, "[EnderController] Protected block added to db!");
+                        } catch (SQLException e) {
+                            Values.logWithType(0, "[EnderController] Added protected block to db fail!");
+                            e.printStackTrace();
+                        }
                         phase = EnderPhase.RUN_OUT;
                     }
                     new EnderController(phase, eman, block).runTaskLater(200);

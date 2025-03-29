@@ -57,4 +57,7 @@ permission: `vensoly7.joke`
 > 🔳 Enderman settings (gravity) \
 > ✅ Saving stolen blocks (save nbt) \
 > ✅ Loading stolen blocks (need testing) \
-> ❌ Enderman clown hat (create model and RP)
+> ✅ Enderman clown hat (create model and RP) \
+> ❌ Secret ender spawn \
+> ✅ Protect Metadata lode \
+> 🔳 Block protection
