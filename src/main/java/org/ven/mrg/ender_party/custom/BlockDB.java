@@ -122,6 +122,22 @@ public class BlockDB {
         }
     }
 
+    public static void clearAllProtectedBlocks() throws SQLException {
+        try (Statement sts = conn.createStatement();
+             ResultSet res = sts.executeQuery("SELECT * FROM protected_blocks")) {
+            Values.logWithType(0, "Select all protected block from database");
+            while (res.next()) {
+                Block block = new Location(
+                        Values.getPlg().getServer().getWorld(res.getString(1)),
+                        res.getInt(2),
+                        res.getInt(3),
+                        res.getInt(4)
+                ).getBlock();
+                block.removeMetadata("protected-block", Values.getPlg());
+            }
+        }
+    }
+
     static void clearDB() throws SQLException {
         try (Statement sts = conn.createStatement()) {
             sts.execute("DELETE FROM blocks");
