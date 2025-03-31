@@ -58,6 +58,6 @@ permission: `vensoly7.joke`
 > ✅ Saving stolen blocks (save nbt) \
 > ✅ Loading stolen blocks (need testing) \
 > ✅ Enderman clown hat (create model and RP) \
-> ❌ Secret ender spawn \
+> ✅ Secret ender spawn \
 > ✅ Protect Metadata lode \
 > ✅ Block protection
