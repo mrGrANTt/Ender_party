@@ -1,5 +1,6 @@
 # Joke plugin with enderman 😁
 <a href="https://wakatime.com/badge/user/11bc60d1-e050-42e4-9591-fc9bdaab16a7/project/b5a8af33-3de2-476c-abcd-c97e8c388d25"><img src="https://wakatime.com/badge/user/11bc60d1-e050-42e4-9591-fc9bdaab16a7/project/b5a8af33-3de2-476c-abcd-c97e8c388d25.svg" alt="wakatime"></a>
+<img src="https://img.shields.io/badge/version-1.21.1-green">
 > This plugin spawning enderman near any online player, and after it, enderman steal block under them and teleport away.
 
 ## Title
